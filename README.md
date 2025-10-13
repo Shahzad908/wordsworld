@@ -33,7 +33,7 @@ A professional website for IT content writing and technical documentation servic
 - Add SSL certificate for security
 
 ## 📞 Contact Integration
-- WhatsApp: +9231968114798 (pre-configured)
+- WhatsApp: +923196814798 (pre-configured)
 - Email: shahzadafzal106@gmail.com (clickable)
 - All forms send data to WhatsApp automatically
 
@@ -51,4 +51,4 @@ A professional website for IT content writing and technical documentation servic
 Simply upload these files to any web hosting service and your professional IT content writing website will be live!
 
 ---
-**Need help?** Contact via WhatsApp: +9231968114798
+**Need help?** Contact via WhatsApp: +923196814798
