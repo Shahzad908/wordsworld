@@ -95,7 +95,7 @@ Would you like to chat on WhatsApp for faster response?`;
 
         if (confirm(successMessage)) {
             // Open WhatsApp with form data
-            window.open(`https://wa.me/923196814798?text=${encodedMessage}`, '_blank');
+            window.open(`https://wa.me/9231968114798?text=${encodedMessage}`, '_blank');
         }
 
         this.reset();
