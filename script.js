@@ -95,7 +95,7 @@ Would you like to chat on WhatsApp for faster response?`;
 
         if (confirm(successMessage)) {
             // Open WhatsApp with form data
-            window.open(`https://wa.me/9231968114798?text=${encodedMessage}`, '_blank');
+            window.open(`https://wa.me/923196814798?text=${encodedMessage}`, '_blank');
         }
 
         this.reset();
@@ -285,16 +285,27 @@ document.head.appendChild(style);
 
 // WhatsApp Contact Functionality
 function initializeWhatsAppFeatures() {
-    // WhatsApp button click tracking
+    // WhatsApp and Telegram button click tracking
     const whatsappButtons = document.querySelectorAll('a[href*="wa.me"]');
-    
+    const telegramButtons = document.querySelectorAll('a[href*="t.me"]');
+
     whatsappButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             // Track WhatsApp click (you can replace this with your analytics)
             console.log('WhatsApp contact button clicked');
-            
+
             // Optional: Show a brief notification
             showWhatsAppNotification();
+        });
+    });
+
+    telegramButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Track Telegram click (you can replace this with your analytics)
+            console.log('Telegram contact button clicked');
+
+            // Optional: Show a brief notification
+            showTelegramNotification();
         });
     });
     
@@ -348,7 +359,7 @@ function initializeWhatsAppFeatures() {
         if (existingNotification) {
             existingNotification.remove();
         }
-        
+
         // Create notification element
         const notification = document.createElement('div');
         notification.className = 'whatsapp-notification';
@@ -356,7 +367,7 @@ function initializeWhatsAppFeatures() {
             <i class="fab fa-whatsapp"></i>
             <span>Opening WhatsApp...</span>
         `;
-        
+
         // Add styles
         notification.style.cssText = `
             position: fixed;
@@ -375,9 +386,55 @@ function initializeWhatsAppFeatures() {
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
             animation: slideInRight 0.3s ease;
         `;
-        
+
         document.body.appendChild(notification);
-        
+
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }
+        }, 3000);
+    }
+
+    // Show brief notification when Telegram is clicked
+    function showTelegramNotification() {
+        // Remove existing notification
+        const existingNotification = document.querySelector('.telegram-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = 'telegram-notification';
+        notification.innerHTML = `
+            <i class="fab fa-telegram"></i>
+            <span>Opening Telegram...</span>
+        `;
+
+        // Add styles
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: #0088cc;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+            animation: slideInRight 0.3s ease;
+        `;
+
+        document.body.appendChild(notification);
+
         // Remove notification after 3 seconds
         setTimeout(() => {
             if (notification.parentNode) {
